@@ -38,12 +38,12 @@ HEADERS += \
 FORMS += \
         ui/mainwindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -LD:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_world345
-else:win32:CONFIG(debug, debug|release): LIBS += -LD:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_world345d
+win32:CONFIG(release, debug|release): LIBS += -LC:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_world345
+else:win32:CONFIG(debug, debug|release): LIBS += -LC:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_world345d
 
-win32:CONFIG(release, debug|release): LIBS += -LD:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_xfeatures2d345
-else:win32:CONFIG(debug, debug|release): LIBS += -LD:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_xfeatures2d345d
+win32:CONFIG(release, debug|release): LIBS += -LC:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_xfeatures2d345
+else:win32:CONFIG(debug, debug|release): LIBS += -LC:/opencv_sdk/opencv3/build/x64/vc15/lib/ -lopencv_xfeatures2d345d
 
-INCLUDEPATH += D:/opencv_sdk/opencv3/build/include
-DEPENDPATH += D:/opencv_sdk/opencv3/build/include
+INCLUDEPATH += C:/opencv_sdk/opencv3/build/include
+DEPENDPATH += C:/opencv_sdk/opencv3/build/include
 
