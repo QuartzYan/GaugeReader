@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QImage>
 #include <QPixmap>
+#include <QSettings>
+#include <QFileDialog>
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QGraphicsScene>
@@ -30,6 +32,7 @@ private slots:
   void on_pushButton_2_clicked();
   void on_pushButton_3_clicked();
   void on_pushButton_4_clicked();
+  void on_pushButton_5_clicked();
 
   void v1showImage(QImage img);
   void v2showImage(QImage img);
@@ -42,33 +45,21 @@ private slots:
   void on_circleButton_clicked();
   void on_lineButton_clicked();
 
-  void on_matchParam_valueChanged(int value);
-
-  void on_adjustParam_valueChanged(int value);
-
   void on_filterParam_1_valueChanged(int value);
-
   void on_filterParam_2_valueChanged(int value);
-
   void on_filterParam_3_valueChanged(int value);
-
   void on_cannyParam_1_valueChanged(int value);
-
   void on_cannyParam_2_valueChanged(int value);
-
   void on_cannyParam_3_valueChanged(int value);
-
   void on_circleParam_1_valueChanged(int value);
-
   void on_circleParam_2_valueChanged(int value);
-
   void on_circleParam_3_valueChanged(int value);
-
   void on_lineParam_1_valueChanged(int value);
-
   void on_lineParam_2_valueChanged(int value);
-
   void on_lineParam_3_valueChanged(int value);
+
+
+  void on_thresholdParam_valueChanged(int value);
 
 private:
   GaugeReader *_gr;

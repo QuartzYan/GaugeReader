@@ -24,7 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-# RC_ICONS = "CallButton.ico"
+RC_ICONS = "GaugeReader.ICO"
 
 SOURCES += \
         main.cpp \

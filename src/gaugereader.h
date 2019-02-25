@@ -28,7 +28,7 @@ public:
 
   void matchImage();
   void adjustImage();
-  void filterImage(int param1, double param2, double param3);
+  void filterImage(int param1, double param2, double param3, int param4);
   void cannyImage(double param1, double param2, int param3);
   void circleImage(int param1, double param2, double param3);
   void lineImage(double param1, double param2, double param3);
@@ -43,6 +43,7 @@ private:
   float point2pointDis(cv::Point point1, cv::Point point2);
   float point2lineDis(cv::Point goal_point, cv::Point line_point1, cv::Point line_point2);
   cv::Point lineIntersectPoint(cv::Point line1_point1, cv::Point line1_point2, cv::Point line2_point1, cv::Point line2_point2);
+  cv::Point lineIntersectPoint(float k1, float b1, float k2, float b2);
 
 signals:
 
@@ -62,6 +63,7 @@ private:
   cv::Point circlePoint;
   int circleRadiu;
   float result;
+  cv::Point tipPoint;
 };
 
 #endif // GAUGEREADER_H

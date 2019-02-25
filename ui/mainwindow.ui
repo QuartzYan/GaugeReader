@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1013</width>
-    <height>751</height>
+    <width>959</width>
+    <height>835</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,7 +81,14 @@
          <item>
           <widget class="QPushButton" name="pushButton_2">
            <property name="text">
-            <string>处理模板</string>
+            <string>保存配置</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>加载配置</string>
            </property>
           </widget>
          </item>
@@ -173,20 +180,6 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QSlider" name="matchParam">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="matchParamLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>
@@ -196,20 +189,6 @@
           <string>配准</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_9">
-          <item row="1" column="0">
-           <widget class="QSlider" name="adjustParam">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="adjustParamLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0" colspan="2">
            <widget class="QPushButton" name="adjustButton">
             <property name="text">
@@ -275,6 +254,20 @@
             </property>
            </widget>
           </item>
+          <item row="4" column="0">
+           <widget class="QSlider" name="thresholdParam">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="thresholdLabel">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -284,7 +277,21 @@
           <string>边缘检测</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
+          <item row="4" column="0">
+           <widget class="QSlider" name="cannyParam_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
           <item row="2" column="0">
+           <widget class="QSlider" name="cannyParam_1">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
            <widget class="QSlider" name="cannyParam_2">
             <property name="maximum">
              <number>199</number>
@@ -294,36 +301,8 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QSlider" name="cannyParam_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QSlider" name="cannyParam_1">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLabel" name="cannyParamLabel_1">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="cannyParamLabel_2">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="cannyParamLabel_3">
+           <widget class="QLabel" name="cannyParamLabel_1">
             <property name="text">
              <string>0</string>
             </property>
@@ -333,6 +312,20 @@
            <widget class="QPushButton" name="cannyButton">
             <property name="text">
              <string>边缘检测</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="cannyParamLabel_3">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="cannyParamLabel_2">
+            <property name="text">
+             <string>0</string>
             </property>
            </widget>
           </item>

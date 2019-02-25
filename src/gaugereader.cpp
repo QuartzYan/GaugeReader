@@ -120,11 +120,13 @@ void GaugeReader::adjustImage()
   showQImage = cvMat2QImage(adjustImg);
 }
 
-void GaugeReader::filterImage(int param1, double param2, double param3)
+void GaugeReader::filterImage(int param1, double param2, double param3, int param4)
 {
   cv::Mat gray;
   cv::cvtColor(adjustImg, gray, cv::COLOR_BGR2GRAY);
   cv::bilateralFilter(gray, filterImg, param1, param2, param3);
+
+  cv::threshold(filterImg, filterImg, param4, 255, 0);//er zhi hua
 
   //show
   cv::cvtColor(filterImg, showImg, cv::COLOR_GRAY2BGR);
@@ -135,9 +137,7 @@ void GaugeReader::cannyImage(double param1, double param2, int param3)
 {
   //filterImg = cv::imread("filter.jpg", 0);
 
-  cv::threshold(filterImg, cannyImg, 46, 255, 0);//er zhi hua
-
-  cv::Canny(cannyImg, cannyImg, param1, param2, 3);
+  cv::Canny(filterImg, cannyImg, param1, param2, 3);
 
   //cv::imwrite("canny.jpg", cannyImg);
 
@@ -302,6 +302,8 @@ void GaugeReader::lineImage(double param1, double param2, double param3)
       cv::line(showImg, slp1, slp2, cv::Scalar(0, 255, 255), 5, cv::LINE_AA);
 
       result = atan(sK) * 57.29578;
+      tipPoint = lineIntersectPoint(K_l1, B_l1, K_l2, B_l2);
+      cv::circle(showImg, tipPoint, 10, cv::Scalar(249, 167, 203), -1, 8, 0);
 
       cv::imwrite("line.jpg",showImg);
     }
@@ -322,7 +324,25 @@ void GaugeReader::lineImage(double param1, double param2, double param3)
 
 float GaugeReader::getResult()
 {
-  return 360 - result;
+  int d = int(circleRadiu * sin(3.1415926 / 4));
+  tipPoint.x = tipPoint.x + d;
+  tipPoint.y = tipPoint.y + d;
+  if(tipPoint.x > circlePoint.x && tipPoint.y > circlePoint.y)
+  {
+    return 270 + abs(result);
+  }
+  else if(tipPoint.x > circlePoint.x && tipPoint.y < circlePoint.y)
+  {
+    return 270 - abs(result);
+  }
+  else if(tipPoint.x < circlePoint.x && tipPoint.y < circlePoint.y)
+  {
+    return 90 + abs(result);
+  }
+  else if(tipPoint.x < circlePoint.x && tipPoint.y > circlePoint.y)
+  {
+    return 90 - abs(result);
+  }
 }
 
 QImage GaugeReader::cvMat2QImage(cv::Mat inputImage)
@@ -395,6 +415,13 @@ cv::Point GaugeReader::lineIntersectPoint(cv::Point line1_point1, cv::Point line
   intersectPoint.x = ((c2/b2) - (c1/b1)) / ((a1/b1) - (a2/b2));
 
   return intersectPoint;
+}
+
+cv::Point GaugeReader::lineIntersectPoint(float k1, float b1, float k2, float b2)
+{
+  float x = (b2 - b1)/(k1 - k2);
+  float y = k1*x + b1;
+  return cv::Point(x, y);
 }
 
 float GaugeReader::point2pointDis(cv::Point point1, cv::Point point2)
